@@ -7,7 +7,7 @@ RUN apt-get update \
     | grep -E '"browser_download_url.*giddyup"'| head -1 | cut -d\" -f4) \
   && chmod 755 /usr/local/bin/giddyup
 
-COPY ["ceph_envs.sh", "/etc/profile.d/"]
-RUN cat /etc/profile.d/ceph_envs.sh >> /etc/bash.bashrc
+COPY ["inject_envs.sh", "/usr/local/sbin/"]
+RUN /usr/local/sbin/inject_envs.sh
 
 ENTRYPOINT ["/bin/bash"]
