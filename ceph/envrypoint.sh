@@ -7,7 +7,7 @@ if [ -n "${RANCHER}" ]
 then
   MON_IP=$(giddyup ip myip 2>/dev/null)
   # Trying to find a randomly happening error (about 2/3 of the tries) somewhere in the CEPH_PUBLIC_NETWORK calculation
-  giddyuo ip myip
+  giddyup ip myip
   ip a
   ip a | grep -oE '([0-9]{1,3}\.){3}[0-9]{1,3}/[0-9]{1,2}'
   
