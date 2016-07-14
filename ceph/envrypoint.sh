@@ -13,7 +13,7 @@ then
   done
 
   # Then wait for network readiness
-  while [ -z "$(ip a | grep "${MON_IP}")" ]
+  while [ "$(ip a | grep -oE '([0-9]{1,3}\.){3}[0-9]{1,3}\/[0-9]{1,2}')" ]
   do
     CEPH_PUBLIC_NETWORK=$(ipcalc $(ip a | grep "${MON_IP}" \
       | grep -oE '([0-9]{1,3}\.){3}[0-9]{1,3}\/[0-9]{1,2}') | grep -E '^Network:' \
