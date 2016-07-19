@@ -6,6 +6,9 @@ RUN apt-get update \
   && curl -sLo /usr/local/bin/giddyup $(curl -s https://api.github.com/repos/cloudnautique/giddyup/releases/latest \
     | grep -E '"browser_download_url.*giddyup"'| head -1 | cut -d\" -f4) \
   && chmod 755 /usr/local/bin/giddyup
+  && apt-get autoremove -y \
+  && rm -rf /var/lib/apt/lists/* \
+  && rm -rf /var/log/*
 
 COPY ["envrypoint.sh", "/usr/local/sbin/"]
 
